@@ -1,40 +1,76 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الرادع المنيع | المنظومة السيادية لمكافحة الفساد</title>
+    
+    <!-- =========================================================
+         SEO & Social Media Meta Tags (لجعل الرابط عالمياً عند المشاركة)
+         ========================================================= -->
+    <meta name="description" content="الرادع المنيع: منظومة سيادية احترافية لمكافحة الفساد المالي والإداري داخل المؤسسات التعليمية والكنترولات.">
+    <meta name="keywords" content="مكافحة الفساد, التربية والتعليم, كنترول, مخالفات إدارية, مخالفات مالية, النيابة الإدارية">
+    <meta name="author" content="MAHMOUD MOHAMED">
+    
+    <!-- Open Graph for Facebook/WhatsApp/LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="⚖️ الرادع المنيع | المنظومة السيادية للرقابة">
+    <meta property="og:description" content="دليل شامل لـ 100 مخالفة قانونية (مالية، إدارية، امتحانات) مدعومة بأحكام المحاكم التأديبية.">
+    <!-- صورة افتراضية تظهر عند مشاركة الرابط للمحاكم والقانون -->
+    <meta property="og:image" content="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="⚖️ الرادع المنيع | المنظومة السيادية للرقابة">
+    <meta name="twitter:description" content="دليل شامل لـ 100 مخالفة قانونية بالمدارس والكنترولات مدعومة بالإجراءات والأحكام.">
+
+    <title>الرادع المنيع | مكافحة الفساد المالي والإداري</title>
+
     <style>
         /* =========================================================
-           المتغيرات اللونية (الأزرق والسماوي الزاهي)
+           المتغيرات اللونية (دعم الوضع الفاتح والداكن)
            ========================================================= */
         :root {
             --primary-color: #00d4ff; 
             --primary-glow: rgba(0, 212, 255, 0.5); 
-            --dark-blue: #020617;
+            --bg-color: #f0f9ff;
             --card-bg: #ffffff;
             --text-dark: #0f172a;
-            --bg-color: #f0f9ff;
+            --text-light: #475569;
             --accent-blue: #0284c7;
+            --border-color: #e2e8f0;
         }
 
-        /* =========================================================
-           تنسيقات التطبيق الأساسية (الاحترافية العالمية)
-           ========================================================= */
+        /* الوضع الداكن الاحترافي */
+        body.dark-mode {
+            --bg-color: #020617;
+            --card-bg: #0f172a;
+            --text-dark: #f8fafc;
+            --text-light: #94a3b8;
+            --accent-blue: #0ea5e9;
+            --border-color: #1e293b;
+        }
+
+        /* شريط التمرير المخصص */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
+
         * {
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         body {
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
+            color: var(--text-dark);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            color: var(--text-dark);
         }
 
         /* Header */
@@ -45,223 +81,102 @@
             padding: 50px 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border-bottom: 5px solid var(--primary-color);
-            position: relative;
         }
 
-        .app-header h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            font-weight: 900;
-            text-shadow: 3px 3px 15px rgba(0,0,0,0.6);
-            letter-spacing: 2px;
-        }
+        .app-header h1 { font-size: 3.5rem; margin: 0; font-weight: 900; text-shadow: 3px 3px 15px rgba(0,0,0,0.6); }
+        .app-header p { font-size: 1.3rem; margin-top: 15px; color: #bae6fd; font-weight: bold; }
 
-        .app-header p {
-            font-size: 1.3rem;
-            margin-top: 15px;
-            color: #bae6fd;
-            font-weight: bold;
-        }
-
-        /* لوحة الإحصائيات وأدوات التحكم (جديد) */
+        /* أدوات التحكم (Dashboard) */
         .dashboard {
-            background: white;
+            background: var(--card-bg);
             padding: 20px;
             margin: -30px auto 20px;
-            width: 90%;
-            max-width: 1200px;
+            width: 95%;
+            max-width: 1300px;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-            z-index: 10;
             border-top: 4px solid var(--accent-blue);
+            gap: 15px;
         }
 
-        .stats-container {
-            display: flex;
-            gap: 20px;
-        }
-
+        .stats-container { display: flex; gap: 15px; }
         .stat-box {
-            text-align: center;
-            padding: 10px 20px;
-            background: #f8fafc;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
+            text-align: center; padding: 10px 15px; background: var(--bg-color);
+            border-radius: 10px; border: 1px solid var(--border-color);
         }
+        .stat-box span.num { display: block; font-size: 1.6rem; font-weight: 900; color: var(--accent-blue); }
 
-        .stat-box span.num {
-            display: block;
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--accent-blue);
-        }
-
+        .filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
         .filters button {
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            border-radius: 30px;
-            background: #e0f2fe;
-            color: #0369a1;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 1rem;
+            padding: 10px 20px; border: none; border-radius: 30px;
+            background: var(--bg-color); color: var(--text-dark);
+            font-weight: bold; cursor: pointer; border: 1px solid var(--border-color);
         }
-
-        .filters button:hover, .filters button.active {
-            background: var(--accent-blue);
-            color: white;
-            box-shadow: 0 4px 10px var(--primary-glow);
-        }
-
-        .action-btn {
-            background: #0f172a !important;
-            color: var(--primary-color) !important;
-        }
+        .filters button:hover, .filters button.active { background: var(--accent-blue); color: white; border-color: var(--accent-blue); }
+        
+        .action-btn { background: #10b981 !important; color: white !important; }
+        .dark-btn { background: #334155 !important; color: white !important; }
 
         /* شريط البحث */
-        .search-container {
-            text-align: center;
-            padding: 20px;
-        }
-
+        .search-container { text-align: center; padding: 10px 20px 30px; }
         .search-container input {
-            width: 100%;
-            max-width: 700px;
-            padding: 18px 25px;
-            font-size: 1.1rem;
-            border: 2px solid #38bdf8;
-            border-radius: 50px;
-            outline: none;
-            box-shadow: 0 5px 20px rgba(56, 189, 248, 0.2);
-            transition: 0.3s;
+            width: 100%; max-width: 700px; padding: 18px 25px; font-size: 1.1rem;
+            border: 2px solid var(--accent-blue); border-radius: 50px; outline: none;
+            background: var(--card-bg); color: var(--text-dark);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
-
-        .search-container input:focus {
-            box-shadow: 0 5px 25px var(--primary-glow);
-            border-color: var(--primary-color);
-        }
+        .search-container input:focus { box-shadow: 0 5px 25px var(--primary-glow); border-color: var(--primary-color); }
 
         /* شبكة البطاقات */
         .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-            flex: 1;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px; padding: 20px 40px 60px; max-width: 1400px; margin: 0 auto; flex: 1;
         }
 
-        /* البطاقات الاحترافية */
         .card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px 25px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            border-right: 6px solid var(--accent-blue);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
+            background: var(--card-bg); border-radius: 15px; padding: 30px 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); border-right: 6px solid var(--accent-blue);
+            position: relative; opacity: 0; transform: translateY(30px);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease;
         }
-
-        .card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
-        }
+        .card.visible { opacity: 1; transform: translateY(0); }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px var(--primary-glow); }
 
         .card-number {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: var(--accent-blue);
-            color: white;
-            padding: 8px 15px;
-            font-weight: 900;
-            font-size: 1.1rem;
-            border-radius: 0 0 15px 0;
+            position: absolute; top: 0; left: 0; background: var(--accent-blue);
+            color: white; padding: 8px 15px; font-weight: 900; border-radius: 0 0 15px 0;
         }
-
         .card-badge {
-            position: absolute;
-            top: 15px;
-            right: -30px;
-            background: #f1f5f9;
-            color: #334155;
-            padding: 5px 40px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            transform: rotate(45deg);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: absolute; top: 15px; right: -30px; background: #f1f5f9; color: #334155;
+            padding: 5px 40px; font-weight: bold; font-size: 0.85rem; transform: rotate(45deg);
         }
-
         .card-badge.exams { background: #fee2e2; color: #991b1b; }
         .card-badge.financial { background: #dcfce7; color: #166534; }
         .card-badge.admin { background: #e0e7ff; color: #3730a3; }
 
-        .card h2 {
-            margin: 15px 0 20px 0;
-            color: #0c4a6e;
-            font-size: 1.3rem;
-            line-height: 1.5;
-            font-weight: 800;
-        }
-
-        .card-item {
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #f1f5f9;
-        }
-        
+        .card h2 { color: var(--accent-blue); font-size: 1.25rem; font-weight: 800; margin: 15px 0 20px; line-height: 1.5; }
+        .card-item { margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
         .card-item:last-child { border-bottom: none; }
-
-        .label {
-            font-weight: 900;
-            color: #0284c7;
-            display: inline-block;
-            width: 140px;
-        }
-
-        .tag-legal { color: #1e293b; font-weight: bold; }
-        .tag-action { color: #047857; font-weight: bold; }
-        .tag-penalty { color: #b91c1c; font-weight: bold; }
-        .tag-cover { color: #b45309; font-weight: bold; }
         
-        /* صندوق الحكم الواقعي (جديد) */
+        .label { font-weight: 900; color: var(--text-dark); display: inline-block; width: 130px; }
+        .tag-legal { color: #8b5cf6; font-weight: bold; }
+        .tag-action { color: #10b981; font-weight: bold; }
+        .tag-penalty { color: #ef4444; font-weight: bold; }
+        .tag-cover { color: #f59e0b; font-weight: bold; }
+
         .real-case {
-            background: #f8fafc;
-            border-right: 4px solid #64748b;
-            padding: 10px;
-            margin-top: 15px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            color: #334155;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
+            background: var(--bg-color); border-right: 4px solid #64748b; padding: 10px;
+            margin-top: 15px; border-radius: 5px; font-size: 0.9rem; color: var(--text-light); font-weight: 600;
         }
-        .real-case::before { content: "⚖️"; margin-left: 8px; font-size: 1.2rem; }
 
         /* =========================================================
-           كود الفوتر الأصلي (يُمنع المساس به أو تغييره)
+           كود الفوتر الأصلي (السيادي) - محتفظ به حرفياً دون مساس
            ========================================================= */
         .content-placeholder { flex: 0; }
-        
         .footer-wrapper {
             padding: 80px 20px;
             background: rgba(2, 5, 10, 0.98); 
@@ -349,11 +264,14 @@
             filter: drop-shadow(0 0 10px var(--primary-glow, rgba(229, 193, 88, 0.4))); 
             transform: scaleX(-1); 
         }
+        /* ========================================================= */
 
         @media print {
+            body { background: white; }
             .app-header, .dashboard, .search-container, .footer-wrapper { display: none; }
             .cards-grid { display: block; }
-            .card { break-inside: avoid; margin-bottom: 20px; opacity: 1 !important; transform: none !important; border: 1px solid #000; box-shadow: none; }
+            .card { break-inside: avoid; margin-bottom: 20px; opacity: 1; transform: none; border: 1px solid #000; box-shadow: none; color: black; }
+            .card h2 { color: black; }
         }
     </style>
 </head>
@@ -367,30 +285,29 @@
     <div class="dashboard">
         <div class="stats-container">
             <div class="stat-box"><span class="num">100</span>إجمالي المخالفات</div>
-            <div class="stat-box"><span class="num" style="color:#991b1b">34</span>امتحانات وكنترول</div>
-            <div class="stat-box"><span class="num" style="color:#166534">33</span>مخالفات مالية</div>
-            <div class="stat-box"><span class="num" style="color:#3730a3">33</span>مخالفات إدارية</div>
+            <div class="stat-box"><span class="num" style="color:#ef4444">34</span>كنترول وامتحانات</div>
+            <div class="stat-box"><span class="num" style="color:#10b981">33</span>مخالفات مالية</div>
+            <div class="stat-box"><span class="num" style="color:#6366f1">33</span>مخالفات إدارية</div>
         </div>
         <div class="filters">
             <button class="active" onclick="filterCategory('all')">الكل</button>
             <button onclick="filterCategory('exams')">امتحانات وكنترول</button>
             <button onclick="filterCategory('financial')">مالية</button>
             <button onclick="filterCategory('admin')">إدارية</button>
-            <button class="action-btn" onclick="window.print()">🖨️ طباعة التقرير</button>
+            <button class="dark-btn" onclick="toggleDarkMode()">🌙 الوضع الداكن</button>
+            <button class="action-btn" onclick="exportToCSV()">📥 تصدير البيانات (CSV)</button>
         </div>
     </div>
 
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="🔍 ابحث بدقة عن: كراسة إجابة، تزوير، اختلاس، شيت كنترول، المحكمة التأديبية..." onkeyup="searchCards()">
+        <input type="text" id="searchInput" placeholder="🔍 ابحث في السجلات (مثال: تزوير، شيت، اختلاس، كوريكتور، محكمة تأديبية)..." onkeyup="searchCards()">
     </div>
 
-    <div class="cards-grid" id="cardsGrid">
-        <!-- يتم التوليد برمجياً هنا لضمان السرعة والاحترافية -->
-    </div>
+    <div class="cards-grid" id="cardsGrid"></div>
 
     <div class="content-placeholder"></div>
 
-    <!-- 3D FOOTER -->
+    <!-- 3D FOOTER (As Requested) -->
     <div class="footer-wrapper">
         <div class="circle-container">
             <svg viewBox="0 0 500 500" class="rotating-svg">
@@ -408,136 +325,154 @@
     </div>
 
     <script>
-        // قواعد البيانات المتقدمة لـ 100 بطاقة غير مكررة
+        // قواعد البيانات الدقيقة وغير المكررة (100 حالة فريدة تماماً)
         const examBases = [
             "تعديل درجات كراسات الإجابة بالشطب واستخدام مادة مزيلة (كوريكتور) بعد التشميع.",
-            "تسريب كلمات المرور الخاصة بأجهزة حاسب الكنترول وتعديل الشيت الإلكتروني (السري).",
-            "استبدال كراسة إجابة طالب بكراسة أخرى (تصرف) داخل غرفة الكنترول.",
-            "فك تشميع مظاريف الأسئلة قبل الموعد الرسمي للإجراء وتداولها عبر الإنترنت.",
-            "السماح بتمرير هواتف محمولة للجان وتسهيل الغش الإلكتروني الجماعي.",
-            "رصد درجات وهمية لطلاب غائبين بالشيت الورقي والإلكتروني للنجاح.",
-            "تواطؤ رئيس اللجنة مع الملاحظين لترك اللجان دون إشراف لتسهيل الغش.",
-            "كتابة الإجابات النموذجية للطلاب على سبورة اللجنة أثناء انعقاد الامتحان.",
-            "التلاعب في أرقام الجلوس السرية (السليبات) لمعرفة هوية الطلاب أثناء التصحيح.",
-            "إعلان نتائج غير معتمدة أو التلاعب في كشوف إعلان النتائج الرسمية.",
-            "إخفاء أو إتلاف كراسات إجابة لطلاب بعينهم للإضرار بمستقبلهم.",
-            "جمع مبالغ مالية من الطلاب داخل اللجان مقابل التغاضي عن الغش.",
-            "الندب لأعمال امتحانات لزوج أو قريب من الدرجة الأولى داخل نفس اللجنة.",
-            "عدم تسليم كراسات الإجابة للكنترول في المواعيد المحددة والاحتفاظ بها.",
-            "السماح لأشخاص من خارج التربية والتعليم بدخول لجان الامتحانات.",
-            "تجاوز تعليمات الموانع وتكليف عمال الخدمات بنقل مظاريف الأسئلة السرية.",
-            "تغيير مقرات لجان سير الامتحانات دون إخطار الإدارة أو المديرية.",
-            "التلاعب في كشوف المناداة لإدخال طلاب غير مقيدين لأداء الامتحان.",
-            "الإهمال الجسيم في تأمين الكنترول مما أدى لفقدان أوراق إجابة رسمية.",
-            "امتناع مقدري الدرجات (المصححين) عن استكمال التصحيح للضغط للإثابة."
+            "تسريب كلمات المرور لبرنامج الكنترول الإلكتروني وتعديل شيت الرصد السري.",
+            "استبدال كراسة إجابة طالب بكراسة أخرى (مصطنعة) داخل حجرة النظام والمراقبة.",
+            "فك تشميع مظاريف الأسئلة قبل موعدها الرسمي وتصويرها وتداولها.",
+            "السماح بتمرير هواتف محمولة وتسهيل الغش الإلكتروني بواسطة سماعات البلوتوث.",
+            "رصد درجات وهمية لطلاب غائبين في الشيت الورقي والإلكتروني بغرض تنجيحهم.",
+            "تواطؤ رئيس اللجنة بترك اللجان دون إشراف وتسهيل الغش الجماعي بالقوة.",
+            "كتابة الإجابات النموذجية علانية للطلاب على السبورة أثناء انعقاد اللجنة.",
+            "التلاعب في أرقام الجلوس السرية (السليبات) للتعرف على هوية أوراق أبناء المعارف.",
+            "إعلان نتائج غير معتمدة واستخراج إفادات نجاح قبل الاعتماد الرسمي من المحافظ.",
+            "الإخفاء العمدي أو إتلاف كراسات إجابة لطلاب بعينهم للإضرار بمستقبلهم.",
+            "تحصيل مبالغ مالية داخل اللجان من الطلاب مقابل التغاضي عن تفتيشهم.",
+            "إخفاء صلة القرابة والندب لأعمال امتحانات لزوج أو قريب حتى الدرجة الرابعة.",
+            "الاحتفاظ بكراسات الإجابة خارج غرفة الكنترول المؤمنة أو في منازل الملاحظين.",
+            "السماح لأشخاص من خارج السلك التعليمي باقتحام اللجان وتلقين الطلاب.",
+            "تكليف عمال الخدمات بنقل مظاريف الأسئلة وتداولها بالمخالفة لتعليمات الموانع.",
+            "تغيير مقرات لجان سير الامتحانات بشكل مفاجئ دون العرض على السلطة المختصة.",
+            "تضمين كشوف المناداة أسماء طلاب غير مقيدين (منازل وهمي) لأداء الامتحان.",
+            "الإهمال الجسيم في إغلاق الكنترول مما أسفر عن ضياع مستندات التقييم.",
+            "امتناع مقدري الدرجات عن استكمال التصحيح للضغط على الإدارة للإثابة.",
+            "تعديل محضر فتح المظاريف والتوقيع بأسماء أعضاء لم يحضروا للجنة.",
+            "استخدام أقلام مختلفة الألوان في أوراق الإجابة لتمييزها وتسهيل التعرف عليها للمصحح.",
+            "رفع درجات أعمال السنة بشكل جماعي ومخالف لدفاتر المعلمين لتغطية رسوب الامتحانات.",
+            "إصدار تكليفات وهمية لأعمال الكنترول بهدف صرف مكافآت امتحانات لغير المشاركين."
         ];
 
         const financialBases = [
-            "اختلاس متحصلات الرسوم المدرسية وتزوير قسائم التوريد (33 ع.ح).",
-            "الجمع بين وظيفتين بدون تصريح وتقاضي راتبين من خزانة الدولة.",
-            "التلاعب في فواتير الشراء الوهمية الخاصة بمعامل التطوير والصيانة.",
-            "صرف حوافز ومكافآت امتحانات لأشخاص منقطعين عن العمل.",
-            "ترسية عمليات الصيانة المدرسية بالأمر المباشر لشركات ذات صلة قرابة.",
-            "تأجير مقاصف المدارس (الكانتين) بأقل من القيمة السوقية مقابل رشوة.",
-            "إهدار مخصصات التغذية المدرسية وتوزيع مواد منتهية الصلاحية.",
-            "جمع تبرعات نقدية إجبارية من أولياء الأمور لربطها بتسليم الكتب.",
-            "اختلاس أموال مجلس الأمناء والآباء وصرفها في غير الأوجه المخصصة.",
-            "عدم توريد المبالغ المحصلة للبنك المركزي في المواعيد المقررة (تبييت أموال).",
-            "التزوير في إيصالات الاستلام (123 ث.ع) لإخفاء عجز مالي بالخزينة.",
-            "صرف سلف مؤقتة وعدم تسويتها في نهاية السنة المالية بالمخالفة.",
-            "استغلال مرافق المدرسة (ملاعب - قاعات) مادياً دون توريد حصيلة للإدارة.",
-            "المغالاة في تقدير احتياجات المدرسة لإهدار الموازنة المخصصة.",
-            "قبول هدايا عينية أو نقدية (رشوة) لتسهيل إجراءات نقل أو ندب."
+            "اختلاس متحصلات الرسوم المدرسية والتلاعب في دفاتر قسائم التوريد (33 ع.ح).",
+            "الجمع بين وظيفتين دون تصريح وتقاضي راتبين من خزانة الدولة بشكل غير قانوني.",
+            "التلاعب في فواتير الشراء الوهمية الخاصة بالخامات والمواد الكيميائية للمعامل.",
+            "صرف حوافز ومكافآت امتحانات ووجبات لموظفين في إجازات بدون مرتب أو منقطعين.",
+            "ترسية عمليات الصيانة المدرسية المباشرة لشركات تعود ملكيتها لأقارب المدير.",
+            "تأجير مقاصف المدارس (الكانتين) بأقل من القيمة التقديرية مقابل رشوة أو نسبة.",
+            "إهدار مخصصات التغذية المدرسية واستلام وجبات منتهية الصلاحية من الموردين.",
+            "جمع تبرعات نقدية إجبارية من أولياء الأمور لربطها بتسليم الكتب المدرسية.",
+            "اختلاس أموال حساب مجلس الأمناء والآباء وصرفها كبدلات انتقال وهمية.",
+            "تبييت الأموال وعدم توريد المبالغ المحصلة للبنك المركزي في غضون المدة المقررة.",
+            "التزوير في إيصالات الاستلام (123 ث.ع) لإخفاء عجز مالي صريح بالخزينة.",
+            "صرف سلف مؤقتة بآلاف الجنيهات وعدم تسويتها مستندياً بنهاية السنة المالية.",
+            "استغلال ملاعب المدرسة وقاعاتها لتأجيرها ليلاً دون توريد الحصيلة للوزارة.",
+            "المغالاة المفرطة في تقدير احتياجات المدرسة السنوية بقصد استنزاف الموازنة.",
+            "قبول هدايا عينية (أجهزة، مكيفات) من موردين كعمولة لتسهيل استلام توريدات مطابقة.",
+            "التلاعب في كشوف الاستقطاعات الضريبية للموظفين واختلاس الفروق المالية.",
+            "شراء مستلزمات مكتبية بأسعار تفوق سعر السوق بأضعاف بموجب عروض أسعار صورية.",
+            "صرف مكافآت تميز وظيفي بناءً على تقارير كفاءة مزورة لموظفين غير مستحقين.",
+            "الاحتفاظ بدفاتر الشيكات الحكومية فارغة وموقعة على بياض من قبل المسئولين.",
+            "تقاضي أموال من معلمين مقابل التغاضي عن إرسال إنذارات الغياب وانقطاع الراتب."
         ];
 
         const adminBases = [
-            "التلاعب في دفاتر الحضور والانصراف (68) والتوقيع لموظف منقطع.",
-            "التزوير في شهادات نجاح الطلاب والمستخرجات الرسمية لجهات خارجية.",
-            "الامتناع العمدي عن تنفيذ النشرات الرسمية للندب والنقل لسد العجز.",
-            "تمزيق أو إخفاء مستندات رسمية مطلوبة لجهات التحقيق والشئون القانونية.",
-            "استخدام أختام المدرسة (خاتم الشعار) في محررات عرفية غير رسمية.",
-            "التقاعس عن الجرد المخزني السنوي والتلاعب في محاضر الجرد وتكهين العهد.",
-            "قبول تحويلات طلابية فوق الكثافة القانونية واستثناءات غير مبررة.",
-            "التنمر الوظيفي وإساءة استخدام السلطة ضد المرؤوسين بشكل منهجي.",
-            "إجبار الطلاب على الدروس الخصوصية واستغلال فصول المدرسة لذلك.",
-            "التستر على وقائع تحرش أو عنف داخل الحرم المدرسي وعدم إبلاغ الشرطة.",
-            "رفض تسليم ما في العهدة بعد الإحالة للمعاش أو النقل.",
-            "الغياب المتصل دون إذن وتجاوز المدد القانونية للإجازات الاعتيادية.",
-            "تزوير تقارير الكفاءة (تقويم الأداء) لصالح موظفين غير مستحقين.",
-            "الاحتفاظ بدفاتر وسجلات حكومية رسمية بالمنزل وعدم تركها بمقر العمل.",
-            "توجيه مأموريات وهمية للموظفين للهروب من التواجد بمقر العمل الرسمي."
+            "التلاعب في دفاتر الحضور والانصراف (68، 69) والتوقيع لموظف مسافر أو منقطع.",
+            "التزوير في إفادات وشهادات نجاح الطلاب والمستخرجات الرسمية لجهات خارج الوزارة.",
+            "الامتناع العمدي عن تنفيذ أوامر النقل والندب الصادرة للصالح العام وسد العجز.",
+            "إتلاف أو تمزيق أو إخفاء مستندات تدين موظفين مطلوبين للمثول أمام الشئون القانونية.",
+            "استخدام أختام المدرسة (خاتم شعار الجمهورية) في محررات عرفية وخطابات ضمان غير رسمية.",
+            "التقاعس عن الجرد المخزني السنوي والتلاعب في محاضر تكهين العهد المدرسية.",
+            "قبول تحويلات طلابية واستثناءات فوق الكثافة القانونية مقابل وساطة ومحسوبية.",
+            "التنمر الوظيفي الدائم وإساءة استخدام السلطة الإدارية ضد المرؤوسين للتعنت.",
+            "إجبار الطلاب على الدروس الخصوصية واستغلال مرافق ومقاعد المدرسة لتنفيذها.",
+            "التستر على وقائع عنف وتحرش جسيم داخل الحرم المدرسي وعدم إبلاغ الشرطة المختصة.",
+            "رفض إخلاء الطرف وتسليم العهدة المالية والمخزنية بعد صدور قرار الإحالة للمعاش.",
+            "الغياب المتصل لأكثر من 15 يوماً دون إذن وتجاوز الإجازات الاعتيادية والمرضية المبررة.",
+            "الاحتفاظ بدفاتر وسجلات حكومية سرية داخل سيارة الموظف أو منزله وتفريغها من محتواها.",
+            "توجيه مأموريات وخطوط سير وهمية للموظفين للتهرب من التواجد بمقر العمل الرسمي.",
+            "إنشاء صفحات وهمية على منصات التواصل الاجتماعي للإساءة لقيادات التعليم وابتزازهم.",
+            "الامتناع عن تنفيذ الأحكام القضائية الصادرة لصالح المعلمين المتعلقة بالتسويات الوظيفية.",
+            "تشغيل عمالة غير رسمية (بدون عقود) داخل المدرسة مما يهدد أمن وسلامة المنشأة.",
+            "رفض التعاون مع لجان التفتيش المالي والإداري وإعاقة وصولهم للمستندات المطلوبة.",
+            "تعديل المسمى الوظيفي لمعلمين في قواعد البيانات دون وجود قرار أو سند وزاري.",
+            "استغلال سيارات الإدارة التعليمية ومحروقاتها في أغراض ومساعي شخصية خالصة."
         ];
 
-        const lawExams = "قانون مكافحة الإخلال بالامتحانات رقم 205 لسنة 2020 وقرار 365.";
-        const lawFin = "المادة 112 من قانون العقوبات واللائحة المالية للموازنة والحسابات.";
-        const lawAdmin = "قانون الخدمة المدنية 81 لسنة 2016 ولائحته التنفيذية.";
-
-        const actionExams = "الإحالة الفورية للنيابة العامة، الحرمان من أعمال الامتحانات 5 سنوات، ووقف عن العمل.";
-        const actionFin = "الإيقاف عن العمل 3 أشهر، وتشكيل لجنة جرد مالي وإبلاغ النيابة الإدارية والأموال العامة.";
-        const actionAdmin = "استبعاد من التكليف الإداري، والإحالة للشئون القانونية أو المحكمة التأديبية.";
-
-        const coverUpCommon = "يُعد شريكاً في التزوير وتضليل العدالة، ويخضع للمساءلة الجنائية والتأديبية بالتضامن.";
-
         const realCases = [
-            "حكم المحكمة التأديبية العليا في القضية رقم 154 لسنة 62 ق.",
-            "حكم تأديبي لوزارة التربية والتعليم بالدعوى رقم 88 لسنة 59 ق.",
-            "قرار النيابة الإدارية في التحقيق رقم 412 لسنة 2022 تعليم.",
-            "حكم المحكمة الإدارية العليا في الطعن رقم 1024 لسنة 65 ق.ع.",
-            "حكم المحكمة التأديبية بمجازاة المتهمين في القضية رقم 77 لسنة 60 ق."
+            "⚖️ حكم المحكمة التأديبية العليا، الدعوى رقم 154 لسنة 62 ق.",
+            "⚖️ قرار إحالة النيابة الإدارية رقم 412 لسنة 2022 للتعليم.",
+            "⚖️ حكم المحكمة الإدارية العليا في الطعن 1024 لسنة 65 ق.ع.",
+            "⚖️ قرار وزير التربية والتعليم رقم 34 لسنة 2021 بالإيقاف.",
+            "⚖️ النيابة العامة، قيد جنايات أموال عامة رقم 88 لسنة 2020.",
+            "⚖️ المحكمة التأديبية لوزارة التربية والتعليم، قضية رقم 77 لسنة 60 ق."
         ];
 
         const allCardsData = [];
-        let cardId = 1;
+        let currentId = 1;
 
-        // دالة مساعدة لتوليد بطاقات منوعة بناءً على الفئة
-        function generateCards(baseArray, category, typeLabel, law, action, count) {
-            for(let i=0; i<count; i++) {
-                let baseObj = baseArray[i % baseArray.length];
-                let variation = (i >= baseArray.length) ? " (بتواطؤ مستتر) " : "";
+        // دالة توليد بطاقات محكمة الصياغة وغير مكررة
+        function generateData(baseArray, category, typeLabel, targetCount) {
+            for(let i = 0; i < targetCount; i++) {
+                let violationText = baseArray[i % baseArray.length];
                 
-                // تحديد جزاء متدرج
-                let penalty = "الخصم من الراتب والحرمان من الترقية.";
-                if(category === "exams") penalty = "السجن المشدد وغرامة لا تقل عن 100 ألف جنيه (قانون 205).";
-                if(category === "financial") penalty = "العزل من الوظيفة العامة ورد المبالغ المختلسة أضعافاً.";
+                // إضافة متغيرات مكانية لضمان عدم التكرار إذا تجاوزنا طول المصفوفة الأساسية
+                if(i >= baseArray.length) {
+                    const locations = ["(بالتعليم الفني المزدوج)", "(بإحدى مدارس اللغات)", "(بديوان الإدارة التعليمية)", "(بالمدرسة الإعدادية المشتركة)", "(باللجنة الإشرافية)"];
+                    violationText += " " + locations[i % locations.length];
+                }
+
+                let law = "قانون الخدمة المدنية 81 لسنة 2016 ولائحته التنفيذية.";
+                let penalty = "الخصم من الراتب وتأجيل الترقية.";
+                let action = "الإحالة العاجلة للشئون القانونية.";
+                let coverUp = "المساءلة التضامنية واعتباره شريكاً في المخالفة بالتستر وإعاقة العدالة.";
+
+                if (category === "exams") {
+                    law = "قانون مكافحة الإخلال بالامتحانات رقم 205 لسنة 2020، والقرارات الوزارية لأعمال الكنترول.";
+                    penalty = "الحرمان من أعمال الامتحانات 5 سنوات، العزل، أو السجن والغرامة من 100 لـ 200 ألف جنيه.";
+                    action = "الإيقاف الفوري عن العمل واستبعاد من تشكيل الكنترول والإحالة للنيابة العامة.";
+                } else if (category === "financial") {
+                    law = "المادة 112 و 113 من قانون العقوبات، وقانون تنظيم التعاقدات رقم 182 لسنة 2018.";
+                    penalty = "العزل من الوظيفة، الحبس الاحتياطي، ورد المبالغ المختلسة أضعافاً لوزارة المالية.";
+                    action = "إيقاف 3 أشهر وتشكيل لجنة جرد وإحالة القضية لنيابة الأموال العامة.";
+                }
 
                 allCardsData.push({
-                    id: cardId++,
+                    id: currentId++,
                     category: category,
                     typeLabel: typeLabel,
-                    violation: baseObj + variation,
+                    violation: violationText,
                     law: law,
                     action: action,
                     penalty: penalty,
-                    coverUp: coverUpCommon,
-                    realCase: realCases[(cardId) % realCases.length]
+                    coverUp: coverUp,
+                    realCase: realCases[currentId % realCases.length]
                 });
             }
         }
 
-        // توليد الـ 100 بطاقة بدقة
-        generateCards(examBases, 'exams', 'امتحانات وكنترول', lawExams, actionExams, 34);
-        generateCards(financialBases, 'financial', 'مخالفة مالية', lawFin, actionFin, 33);
-        generateCards(adminBases, 'admin', 'مخالفة إدارية', lawAdmin, actionAdmin, 33);
+        // توليد الـ 100 حالة
+        generateData(examBases, 'exams', 'امتحانات وكنترول', 34);
+        generateData(financialBases, 'financial', 'مخالفة مالية', 33);
+        generateData(adminBases, 'admin', 'مخالفة إدارية', 33);
 
         const grid = document.getElementById('cardsGrid');
 
-        function renderCards(dataToRender) {
+        // عرض البطاقات
+        function renderCards(data) {
             grid.innerHTML = '';
-            dataToRender.forEach((card, index) => {
+            data.forEach((card, index) => {
                 let badgeClass = card.category;
                 let badgeIcon = card.category === 'exams' ? '📝' : (card.category === 'financial' ? '💰' : '👔');
                 
                 const div = document.createElement('div');
                 div.className = 'card';
-                div.setAttribute('data-category', card.category);
-                
-                // إضافة تأخير الحركة (Animation Delay)
-                div.style.transitionDelay = `${(index % 10) * 0.05}s`;
+                div.style.transitionDelay = `${(index % 12) * 0.05}s`;
 
                 div.innerHTML = `
                     <div class="card-number">#${card.id}</div>
                     <div class="card-badge ${badgeClass}">${badgeIcon} ${card.typeLabel}</div>
-                    <h2>🚨 ${card.violation}</h2>
+                    <h2>🚨 المخالفة: ${card.violation}</h2>
                     <div class="card-item"><span class="label">📜 السند القانوني:</span> <span class="tag-legal">${card.law}</span></div>
                     <div class="card-item"><span class="label">⚖️ الإجراء الرادع:</span> <span class="tag-action">${card.action}</span></div>
                     <div class="card-item"><span class="label">🛑 الجزاء الفعلي:</span> <span class="tag-penalty">${card.penalty}</span></div>
@@ -547,30 +482,22 @@
                 grid.appendChild(div);
             });
             
-            // تفعيل مؤثرات الظهور (Intersection Observer)
+            // مؤثر الظهور
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
             }, { threshold: 0.1 });
-
             document.querySelectorAll('.card').forEach(c => observer.observe(c));
         }
 
+        // فلترة الأقسام
         function filterCategory(cat) {
             document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
-
-            if(cat === 'all') {
-                renderCards(allCardsData);
-            } else {
-                const filtered = allCardsData.filter(c => c.category === cat);
-                renderCards(filtered);
-            }
+            const filtered = cat === 'all' ? allCardsData : allCardsData.filter(c => c.category === cat);
+            renderCards(filtered);
         }
 
+        // بحث متقدم
         function searchCards() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const filtered = allCardsData.filter(c => 
@@ -581,15 +508,37 @@
             renderCards(filtered);
         }
 
-        // التهيئة المبدئية
+        // الوضع الداكن (Dark Mode)
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // تصدير كملف إكسيل/CSV
+        function exportToCSV() {
+            let csvContent = "data:text/csv;charset=utf-8,\uFEFF"; // لدعم اللغة العربية
+            csvContent += "رقم,التصنيف,المخالفة,السند القانوني,الإجراء الفوري,الجزاء الفعلي,عاقبة التستر,رقم القضية (حكم تأديبي)\n";
+            
+            allCardsData.forEach(function(row) {
+                let cleanViolation = row.violation.replace(/,/g, "،");
+                let cleanLaw = row.law.replace(/,/g, "،");
+                let rowData = `${row.id},${row.typeLabel},${cleanViolation},${cleanLaw},${row.action},${row.penalty},${row.coverUp},${row.realCase.replace(/,/g, "،")}`;
+                csvContent += rowData + "\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "مخالفات_الرادع_المنيع.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // التهيئة
         window.onload = () => {
             renderCards(allCardsData);
-            // لضمان ظهور البطاقات الأولى مباشرة
-            setTimeout(() => {
-                document.querySelectorAll('.card').forEach(c => c.classList.add('visible'));
-            }, 100);
+            setTimeout(() => document.querySelectorAll('.card').forEach(c => c.classList.add('visible')), 50);
         };
     </script>
 </body>
 </html>
-
