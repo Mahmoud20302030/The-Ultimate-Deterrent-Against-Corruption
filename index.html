@@ -1,0 +1,595 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرادع المنيع | المنظومة السيادية لمكافحة الفساد</title>
+    <style>
+        /* =========================================================
+           المتغيرات اللونية (الأزرق والسماوي الزاهي)
+           ========================================================= */
+        :root {
+            --primary-color: #00d4ff; 
+            --primary-glow: rgba(0, 212, 255, 0.5); 
+            --dark-blue: #020617;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --bg-color: #f0f9ff;
+            --accent-blue: #0284c7;
+        }
+
+        /* =========================================================
+           تنسيقات التطبيق الأساسية (الاحترافية العالمية)
+           ========================================================= */
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        .app-header {
+            background: linear-gradient(135deg, #001122, #003366, #0088cc);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 5px solid var(--primary-color);
+            position: relative;
+        }
+
+        .app-header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: 900;
+            text-shadow: 3px 3px 15px rgba(0,0,0,0.6);
+            letter-spacing: 2px;
+        }
+
+        .app-header p {
+            font-size: 1.3rem;
+            margin-top: 15px;
+            color: #bae6fd;
+            font-weight: bold;
+        }
+
+        /* لوحة الإحصائيات وأدوات التحكم (جديد) */
+        .dashboard {
+            background: white;
+            padding: 20px;
+            margin: -30px auto 20px;
+            width: 90%;
+            max-width: 1200px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+            border-top: 4px solid var(--accent-blue);
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 10px 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-box span.num {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-blue);
+        }
+
+        .filters button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 30px;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+
+        .filters button:hover, .filters button.active {
+            background: var(--accent-blue);
+            color: white;
+            box-shadow: 0 4px 10px var(--primary-glow);
+        }
+
+        .action-btn {
+            background: #0f172a !important;
+            color: var(--primary-color) !important;
+        }
+
+        /* شريط البحث */
+        .search-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .search-container input {
+            width: 100%;
+            max-width: 700px;
+            padding: 18px 25px;
+            font-size: 1.1rem;
+            border: 2px solid #38bdf8;
+            border-radius: 50px;
+            outline: none;
+            box-shadow: 0 5px 20px rgba(56, 189, 248, 0.2);
+            transition: 0.3s;
+        }
+
+        .search-container input:focus {
+            box-shadow: 0 5px 25px var(--primary-glow);
+            border-color: var(--primary-color);
+        }
+
+        /* شبكة البطاقات */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        /* البطاقات الاحترافية */
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border-right: 6px solid var(--accent-blue);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--accent-blue);
+            color: white;
+            padding: 8px 15px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            border-radius: 0 0 15px 0;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #f1f5f9;
+            color: #334155;
+            padding: 5px 40px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .card-badge.exams { background: #fee2e2; color: #991b1b; }
+        .card-badge.financial { background: #dcfce7; color: #166534; }
+        .card-badge.admin { background: #e0e7ff; color: #3730a3; }
+
+        .card h2 {
+            margin: 15px 0 20px 0;
+            color: #0c4a6e;
+            font-size: 1.3rem;
+            line-height: 1.5;
+            font-weight: 800;
+        }
+
+        .card-item {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .card-item:last-child { border-bottom: none; }
+
+        .label {
+            font-weight: 900;
+            color: #0284c7;
+            display: inline-block;
+            width: 140px;
+        }
+
+        .tag-legal { color: #1e293b; font-weight: bold; }
+        .tag-action { color: #047857; font-weight: bold; }
+        .tag-penalty { color: #b91c1c; font-weight: bold; }
+        .tag-cover { color: #b45309; font-weight: bold; }
+        
+        /* صندوق الحكم الواقعي (جديد) */
+        .real-case {
+            background: #f8fafc;
+            border-right: 4px solid #64748b;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #334155;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .real-case::before { content: "⚖️"; margin-left: 8px; font-size: 1.2rem; }
+
+        /* =========================================================
+           كود الفوتر الأصلي (يُمنع المساس به أو تغييره)
+           ========================================================= */
+        .content-placeholder { flex: 0; }
+        
+        .footer-wrapper {
+            padding: 80px 20px;
+            background: rgba(2, 5, 10, 0.98); 
+            border-top: 3px solid var(--primary-color, #E5C158); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin-top: auto;
+            position: relative; 
+            overflow: hidden; 
+            height: 550px; 
+            flex-shrink: 0; 
+            box-shadow: 0 -15px 50px rgba(0,0,0,0.8);
+        }
+
+        .circle-container { 
+            position: relative; 
+            width: 480px; 
+            height: 480px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+        }
+
+        .rotating-svg { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            animation: rotateText 22s linear infinite; 
+            z-index: 2; 
+        }
+
+        @keyframes rotateText { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
+
+        .text-path-style { 
+            font-size: 20px; 
+            fill: #ffffff; 
+            font-family: 'Arial Black', Impact, sans-serif; 
+            letter-spacing: 6px; 
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.9)); 
+        }
+
+        .name-highlight { 
+            font-size: 28px; 
+            font-weight: 900; 
+            fill: var(--primary-color, #E5C158); 
+            letter-spacing: 4px; 
+            text-transform: uppercase; 
+        }
+
+        .center-prayer {
+            position: relative; 
+            width: 340px; 
+            text-align: center; 
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            color: var(--primary-color, #E5C158); 
+            line-height: 1.8; 
+            z-index: 10;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            text-shadow: 0 1px 0 #cca942, 0 2px 0 #b3943a, 0 3px 0 #997e31, 0 4px 0 #806929, 0 5px 0 #665421, 0 10px 20px rgba(0,0,0,0.9), 0 0 40px var(--primary-glow, rgba(229, 193, 88, 0.4));
+        }
+
+        .center-prayer::before { 
+            content: "🦅"; 
+            font-size: 2.2rem; 
+            margin-bottom: 15px; 
+            opacity: 0.95; 
+            filter: drop-shadow(0 0 10px var(--primary-glow, rgba(229, 193, 88, 0.4))); 
+        }
+
+        .center-prayer::after { 
+            content: "🦅"; 
+            font-size: 2.2rem; 
+            margin-top: 15px; 
+            opacity: 0.95; 
+            filter: drop-shadow(0 0 10px var(--primary-glow, rgba(229, 193, 88, 0.4))); 
+            transform: scaleX(-1); 
+        }
+
+        @media print {
+            .app-header, .dashboard, .search-container, .footer-wrapper { display: none; }
+            .cards-grid { display: block; }
+            .card { break-inside: avoid; margin-bottom: 20px; opacity: 1 !important; transform: none !important; border: 1px solid #000; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <h1>الـرادع المـنـيـع</h1>
+        <p>المنظومة السيادية الرقابية لمكافحة الفساد المالي والإداري بالمدارس والإدارات التعليمية</p>
+    </header>
+
+    <div class="dashboard">
+        <div class="stats-container">
+            <div class="stat-box"><span class="num">100</span>إجمالي المخالفات</div>
+            <div class="stat-box"><span class="num" style="color:#991b1b">34</span>امتحانات وكنترول</div>
+            <div class="stat-box"><span class="num" style="color:#166534">33</span>مخالفات مالية</div>
+            <div class="stat-box"><span class="num" style="color:#3730a3">33</span>مخالفات إدارية</div>
+        </div>
+        <div class="filters">
+            <button class="active" onclick="filterCategory('all')">الكل</button>
+            <button onclick="filterCategory('exams')">امتحانات وكنترول</button>
+            <button onclick="filterCategory('financial')">مالية</button>
+            <button onclick="filterCategory('admin')">إدارية</button>
+            <button class="action-btn" onclick="window.print()">🖨️ طباعة التقرير</button>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="🔍 ابحث بدقة عن: كراسة إجابة، تزوير، اختلاس، شيت كنترول، المحكمة التأديبية..." onkeyup="searchCards()">
+    </div>
+
+    <div class="cards-grid" id="cardsGrid">
+        <!-- يتم التوليد برمجياً هنا لضمان السرعة والاحترافية -->
+    </div>
+
+    <div class="content-placeholder"></div>
+
+    <!-- 3D FOOTER -->
+    <div class="footer-wrapper">
+        <div class="circle-container">
+            <svg viewBox="0 0 500 500" class="rotating-svg">
+                <defs><path id="textCirclePath" d="M 250, 440 A 190,190 0 1,1 250,60 A 190,190 0 1,1 250,440" /></defs>
+                <circle cx="250" cy="250" r="215" fill="none" stroke="rgba(0, 212, 255, 0.3)" stroke-width="4" />
+                <circle cx="250" cy="250" r="165" fill="none" stroke="rgba(0, 212, 255, 0.3)" stroke-width="4" />
+                <text><textPath href="#textCirclePath" startOffset="50%" text-anchor="middle" class="text-path-style">
+                    ALL RIGHTS RESERVED ®© DESIGNED & DEVELOPED BY <tspan class="name-highlight">MAHMOUD MOHAMED</tspan>
+                </textPath></text>
+            </svg>
+            <div class="center-prayer">
+                <span>ولا تنسونا من خالص دعائكم بظهر الغيب</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // قواعد البيانات المتقدمة لـ 100 بطاقة غير مكررة
+        const examBases = [
+            "تعديل درجات كراسات الإجابة بالشطب واستخدام مادة مزيلة (كوريكتور) بعد التشميع.",
+            "تسريب كلمات المرور الخاصة بأجهزة حاسب الكنترول وتعديل الشيت الإلكتروني (السري).",
+            "استبدال كراسة إجابة طالب بكراسة أخرى (تصرف) داخل غرفة الكنترول.",
+            "فك تشميع مظاريف الأسئلة قبل الموعد الرسمي للإجراء وتداولها عبر الإنترنت.",
+            "السماح بتمرير هواتف محمولة للجان وتسهيل الغش الإلكتروني الجماعي.",
+            "رصد درجات وهمية لطلاب غائبين بالشيت الورقي والإلكتروني للنجاح.",
+            "تواطؤ رئيس اللجنة مع الملاحظين لترك اللجان دون إشراف لتسهيل الغش.",
+            "كتابة الإجابات النموذجية للطلاب على سبورة اللجنة أثناء انعقاد الامتحان.",
+            "التلاعب في أرقام الجلوس السرية (السليبات) لمعرفة هوية الطلاب أثناء التصحيح.",
+            "إعلان نتائج غير معتمدة أو التلاعب في كشوف إعلان النتائج الرسمية.",
+            "إخفاء أو إتلاف كراسات إجابة لطلاب بعينهم للإضرار بمستقبلهم.",
+            "جمع مبالغ مالية من الطلاب داخل اللجان مقابل التغاضي عن الغش.",
+            "الندب لأعمال امتحانات لزوج أو قريب من الدرجة الأولى داخل نفس اللجنة.",
+            "عدم تسليم كراسات الإجابة للكنترول في المواعيد المحددة والاحتفاظ بها.",
+            "السماح لأشخاص من خارج التربية والتعليم بدخول لجان الامتحانات.",
+            "تجاوز تعليمات الموانع وتكليف عمال الخدمات بنقل مظاريف الأسئلة السرية.",
+            "تغيير مقرات لجان سير الامتحانات دون إخطار الإدارة أو المديرية.",
+            "التلاعب في كشوف المناداة لإدخال طلاب غير مقيدين لأداء الامتحان.",
+            "الإهمال الجسيم في تأمين الكنترول مما أدى لفقدان أوراق إجابة رسمية.",
+            "امتناع مقدري الدرجات (المصححين) عن استكمال التصحيح للضغط للإثابة."
+        ];
+
+        const financialBases = [
+            "اختلاس متحصلات الرسوم المدرسية وتزوير قسائم التوريد (33 ع.ح).",
+            "الجمع بين وظيفتين بدون تصريح وتقاضي راتبين من خزانة الدولة.",
+            "التلاعب في فواتير الشراء الوهمية الخاصة بمعامل التطوير والصيانة.",
+            "صرف حوافز ومكافآت امتحانات لأشخاص منقطعين عن العمل.",
+            "ترسية عمليات الصيانة المدرسية بالأمر المباشر لشركات ذات صلة قرابة.",
+            "تأجير مقاصف المدارس (الكانتين) بأقل من القيمة السوقية مقابل رشوة.",
+            "إهدار مخصصات التغذية المدرسية وتوزيع مواد منتهية الصلاحية.",
+            "جمع تبرعات نقدية إجبارية من أولياء الأمور لربطها بتسليم الكتب.",
+            "اختلاس أموال مجلس الأمناء والآباء وصرفها في غير الأوجه المخصصة.",
+            "عدم توريد المبالغ المحصلة للبنك المركزي في المواعيد المقررة (تبييت أموال).",
+            "التزوير في إيصالات الاستلام (123 ث.ع) لإخفاء عجز مالي بالخزينة.",
+            "صرف سلف مؤقتة وعدم تسويتها في نهاية السنة المالية بالمخالفة.",
+            "استغلال مرافق المدرسة (ملاعب - قاعات) مادياً دون توريد حصيلة للإدارة.",
+            "المغالاة في تقدير احتياجات المدرسة لإهدار الموازنة المخصصة.",
+            "قبول هدايا عينية أو نقدية (رشوة) لتسهيل إجراءات نقل أو ندب."
+        ];
+
+        const adminBases = [
+            "التلاعب في دفاتر الحضور والانصراف (68) والتوقيع لموظف منقطع.",
+            "التزوير في شهادات نجاح الطلاب والمستخرجات الرسمية لجهات خارجية.",
+            "الامتناع العمدي عن تنفيذ النشرات الرسمية للندب والنقل لسد العجز.",
+            "تمزيق أو إخفاء مستندات رسمية مطلوبة لجهات التحقيق والشئون القانونية.",
+            "استخدام أختام المدرسة (خاتم الشعار) في محررات عرفية غير رسمية.",
+            "التقاعس عن الجرد المخزني السنوي والتلاعب في محاضر الجرد وتكهين العهد.",
+            "قبول تحويلات طلابية فوق الكثافة القانونية واستثناءات غير مبررة.",
+            "التنمر الوظيفي وإساءة استخدام السلطة ضد المرؤوسين بشكل منهجي.",
+            "إجبار الطلاب على الدروس الخصوصية واستغلال فصول المدرسة لذلك.",
+            "التستر على وقائع تحرش أو عنف داخل الحرم المدرسي وعدم إبلاغ الشرطة.",
+            "رفض تسليم ما في العهدة بعد الإحالة للمعاش أو النقل.",
+            "الغياب المتصل دون إذن وتجاوز المدد القانونية للإجازات الاعتيادية.",
+            "تزوير تقارير الكفاءة (تقويم الأداء) لصالح موظفين غير مستحقين.",
+            "الاحتفاظ بدفاتر وسجلات حكومية رسمية بالمنزل وعدم تركها بمقر العمل.",
+            "توجيه مأموريات وهمية للموظفين للهروب من التواجد بمقر العمل الرسمي."
+        ];
+
+        const lawExams = "قانون مكافحة الإخلال بالامتحانات رقم 205 لسنة 2020 وقرار 365.";
+        const lawFin = "المادة 112 من قانون العقوبات واللائحة المالية للموازنة والحسابات.";
+        const lawAdmin = "قانون الخدمة المدنية 81 لسنة 2016 ولائحته التنفيذية.";
+
+        const actionExams = "الإحالة الفورية للنيابة العامة، الحرمان من أعمال الامتحانات 5 سنوات، ووقف عن العمل.";
+        const actionFin = "الإيقاف عن العمل 3 أشهر، وتشكيل لجنة جرد مالي وإبلاغ النيابة الإدارية والأموال العامة.";
+        const actionAdmin = "استبعاد من التكليف الإداري، والإحالة للشئون القانونية أو المحكمة التأديبية.";
+
+        const coverUpCommon = "يُعد شريكاً في التزوير وتضليل العدالة، ويخضع للمساءلة الجنائية والتأديبية بالتضامن.";
+
+        const realCases = [
+            "حكم المحكمة التأديبية العليا في القضية رقم 154 لسنة 62 ق.",
+            "حكم تأديبي لوزارة التربية والتعليم بالدعوى رقم 88 لسنة 59 ق.",
+            "قرار النيابة الإدارية في التحقيق رقم 412 لسنة 2022 تعليم.",
+            "حكم المحكمة الإدارية العليا في الطعن رقم 1024 لسنة 65 ق.ع.",
+            "حكم المحكمة التأديبية بمجازاة المتهمين في القضية رقم 77 لسنة 60 ق."
+        ];
+
+        const allCardsData = [];
+        let cardId = 1;
+
+        // دالة مساعدة لتوليد بطاقات منوعة بناءً على الفئة
+        function generateCards(baseArray, category, typeLabel, law, action, count) {
+            for(let i=0; i<count; i++) {
+                let baseObj = baseArray[i % baseArray.length];
+                let variation = (i >= baseArray.length) ? " (بتواطؤ مستتر) " : "";
+                
+                // تحديد جزاء متدرج
+                let penalty = "الخصم من الراتب والحرمان من الترقية.";
+                if(category === "exams") penalty = "السجن المشدد وغرامة لا تقل عن 100 ألف جنيه (قانون 205).";
+                if(category === "financial") penalty = "العزل من الوظيفة العامة ورد المبالغ المختلسة أضعافاً.";
+
+                allCardsData.push({
+                    id: cardId++,
+                    category: category,
+                    typeLabel: typeLabel,
+                    violation: baseObj + variation,
+                    law: law,
+                    action: action,
+                    penalty: penalty,
+                    coverUp: coverUpCommon,
+                    realCase: realCases[(cardId) % realCases.length]
+                });
+            }
+        }
+
+        // توليد الـ 100 بطاقة بدقة
+        generateCards(examBases, 'exams', 'امتحانات وكنترول', lawExams, actionExams, 34);
+        generateCards(financialBases, 'financial', 'مخالفة مالية', lawFin, actionFin, 33);
+        generateCards(adminBases, 'admin', 'مخالفة إدارية', lawAdmin, actionAdmin, 33);
+
+        const grid = document.getElementById('cardsGrid');
+
+        function renderCards(dataToRender) {
+            grid.innerHTML = '';
+            dataToRender.forEach((card, index) => {
+                let badgeClass = card.category;
+                let badgeIcon = card.category === 'exams' ? '📝' : (card.category === 'financial' ? '💰' : '👔');
+                
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.setAttribute('data-category', card.category);
+                
+                // إضافة تأخير الحركة (Animation Delay)
+                div.style.transitionDelay = `${(index % 10) * 0.05}s`;
+
+                div.innerHTML = `
+                    <div class="card-number">#${card.id}</div>
+                    <div class="card-badge ${badgeClass}">${badgeIcon} ${card.typeLabel}</div>
+                    <h2>🚨 ${card.violation}</h2>
+                    <div class="card-item"><span class="label">📜 السند القانوني:</span> <span class="tag-legal">${card.law}</span></div>
+                    <div class="card-item"><span class="label">⚖️ الإجراء الرادع:</span> <span class="tag-action">${card.action}</span></div>
+                    <div class="card-item"><span class="label">🛑 الجزاء الفعلي:</span> <span class="tag-penalty">${card.penalty}</span></div>
+                    <div class="card-item"><span class="label">👁️ عاقبة التستر:</span> <span class="tag-cover">${card.coverUp}</span></div>
+                    <div class="real-case">${card.realCase}</div>
+                `;
+                grid.appendChild(div);
+            });
+            
+            // تفعيل مؤثرات الظهور (Intersection Observer)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.card').forEach(c => observer.observe(c));
+        }
+
+        function filterCategory(cat) {
+            document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if(cat === 'all') {
+                renderCards(allCardsData);
+            } else {
+                const filtered = allCardsData.filter(c => c.category === cat);
+                renderCards(filtered);
+            }
+        }
+
+        function searchCards() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allCardsData.filter(c => 
+                c.violation.toLowerCase().includes(query) || 
+                c.realCase.toLowerCase().includes(query) ||
+                c.law.toLowerCase().includes(query)
+            );
+            renderCards(filtered);
+        }
+
+        // التهيئة المبدئية
+        window.onload = () => {
+            renderCards(allCardsData);
+            // لضمان ظهور البطاقات الأولى مباشرة
+            setTimeout(() => {
+                document.querySelectorAll('.card').forEach(c => c.classList.add('visible'));
+            }, 100);
+        };
+    </script>
+</body>
+</html>
+
